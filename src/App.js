@@ -4,11 +4,6 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Pageone from "./Pageone";
 import Pagetwo from "./Pagetwo";
 
-function routeChanged() {
-  window.Appcues.page() 
-  console.log("making page call")
-}
-
 function App() {
 
   useEffect(() => {
@@ -26,8 +21,8 @@ function App() {
         </ul>
       </nav>
     <Switch>
-      <Route path="/pageone" component={Pageone}  onChange={routeChanged}/>
-      <Route path="/pagetwo"  component={Pagetwo} onChange={routeChanged}/>
+      <Route path="/pageone" component={Pageone}/>
+      <Route path="/pagetwo"  component={Pagetwo}/>
     </Switch>
     </main>
 </Router>
