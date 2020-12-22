@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React,{useEffect} from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import Pageone from "./Pageone";
+import Pagetwo from "./Pagetwo";
+
+function routeChanged() {
+  window.Appcues.page() 
+  console.log("making page call")
+}
 
 function App() {
+
+  useEffect(() => {
+  window.Appcues.identify("DesuSaiVenkat")
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+    <main>
+      <nav>
+        <ul>
+          <li><Link to="/pageone">Page 1</Link></li>
+          <li><Link to="/pagetwo">Page 2</Link></li>
+        </ul>
+      </nav>
+    <Switch>
+      <Route path="/pageone" component={Pageone}  onChange={routeChanged}/>
+      <Route path="/pagetwo"  component={Pagetwo} onChange={routeChanged}/>
+    </Switch>
+    </main>
+</Router>
+      </div>
   );
 }
 
